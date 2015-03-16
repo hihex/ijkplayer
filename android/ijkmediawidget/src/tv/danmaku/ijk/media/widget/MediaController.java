@@ -22,6 +22,7 @@ import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.media.AudioManager;
 import android.os.Build;
@@ -40,6 +41,7 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import tv.danmaku.ijk.media.widget.R;
 
 /**
  * A view containing controls for a MediaPlayer. Typically contains the buttons
@@ -95,6 +97,7 @@ public class MediaController extends FrameLayout {
     private ImageButton mPauseButton;
 
     private AudioManager mAM;
+    final Resources resources = getResources();
 
     public MediaController(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -157,18 +160,18 @@ public class MediaController extends FrameLayout {
     protected View makeControllerView() {
         return ((LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(
-                R.layout.mediacontroller, this);
+                        resources.getIdentifier("mediacontroller", "layout", mContext.getPackageName()), this);
     }
 
     private void initControllerView(View v) {
         mPauseButton = (ImageButton) v
-                .findViewById(R.id.mediacontroller_play_pause);
+                .findViewById(resources.getIdentifier("mediacontroller_play_pause", "id", mContext.getPackageName()));
         if (mPauseButton != null) {
             mPauseButton.requestFocus();
             mPauseButton.setOnClickListener(mPauseListener);
         }
 
-        mProgress = (ProgressBar) v.findViewById(R.id.mediacontroller_seekbar);
+        mProgress = (ProgressBar) v.findViewById(resources.getIdentifier("mediacontroller_seekbar", "id", mContext.getPackageName()));
         if (mProgress != null) {
             if (mProgress instanceof SeekBar) {
                 SeekBar seeker = (SeekBar) mProgress;
@@ -178,10 +181,10 @@ public class MediaController extends FrameLayout {
             mProgress.setMax(1000);
         }
 
-        mEndTime = (TextView) v.findViewById(R.id.mediacontroller_time_total);
+        mEndTime = (TextView) v.findViewById(resources.getIdentifier("mediacontroller_time_total", "id", mContext.getPackageName()));
         mCurrentTime = (TextView) v
-                .findViewById(R.id.mediacontroller_time_current);
-        mFileName = (TextView) v.findViewById(R.id.mediacontroller_file_name);
+                .findViewById(resources.getIdentifier("mediacontroller_time_current", "id", mContext.getPackageName()));
+        mFileName = (TextView) v.findViewById(resources.getIdentifier("mediacontroller_file_name", "id", mContext.getPackageName()));
         if (mFileName != null)
             mFileName.setText(mTitle);
     }
@@ -460,10 +463,10 @@ public class MediaController extends FrameLayout {
 
         if (mPlayer.isPlaying())
             mPauseButton
-                    .setImageResource(R.drawable.mediacontroller_pause_button);
+                    .setImageResource(resources.getIdentifier("mediacontroller_pause_button", "id", mContext.getPackageName()));
         else
             mPauseButton
-                    .setImageResource(R.drawable.mediacontroller_play_button);
+                    .setImageResource(resources.getIdentifier("mediacontroller_play_button", "id", mContext.getPackageName()));
     }
 
     private void doPauseResume() {
