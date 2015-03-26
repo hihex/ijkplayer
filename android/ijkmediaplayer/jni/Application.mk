@@ -22,7 +22,7 @@ APP_ABI := armeabi-v7a
 NDK_TOOLCHAIN_VERSION=4.8
 APP_PIE := false
 
-APP_CFLAGS := -O3 -Wall -pipe \
+APP_CFLAGS := -Os -Wall -pipe \
     -ffast-math \
     -fstrict-aliasing -Werror=strict-aliasing \
     -Wno-psabi -Wa,--noexecstack \

@@ -87,7 +87,7 @@ public class VideoView extends SurfaceView implements
     public static final int VIDEO_LAYOUT_ZOOM = 3;
 
     private SurfaceHolder mSurfaceHolder = null;
-    private IMediaPlayer mMediaPlayer = null;
+    protected IMediaPlayer mMediaPlayer = null;
     private int mVideoWidth;
     private int mVideoHeight;
     private int mVideoSarNum;
@@ -103,7 +103,7 @@ public class VideoView extends SurfaceView implements
     private OnInfoListener mOnInfoListener;
     private OnBufferingUpdateListener mOnBufferingUpdateListener;
     private int mCurrentBufferPercentage;
-    private long mSeekWhenPrepared;
+    protected long mSeekWhenPrepared;
     private boolean mCanPause = true;
     private boolean mCanSeekBack = true;
     private boolean mCanSeekForward = true;
