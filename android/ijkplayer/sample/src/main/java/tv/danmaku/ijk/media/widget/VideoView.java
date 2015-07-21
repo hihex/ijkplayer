@@ -55,7 +55,7 @@ import android.view.ViewGroup.LayoutParams;
  * sources (such as resources or content providers), takes care of computing its
  * measurement from the video so that it can be used in any layout manager, and
  * provides various display options such as scaling and tinting.
- * 
+ *
  * VideoView also provide many wrapper methods for
  * {@link io.vov.vitamio.MediaPlayer}, such as {@link #getVideoWidth()},
  * {@link #setSubShown(boolean)}
@@ -89,7 +89,7 @@ public class VideoView extends SurfaceView implements
     public static final int VIDEO_LAYOUT_ZOOM = 3;
 
     private SurfaceHolder mSurfaceHolder = null;
-    private IMediaPlayer mMediaPlayer = null;
+    protected IMediaPlayer mMediaPlayer = null;
     private int mVideoWidth;
     private int mVideoHeight;
     private int mVideoSarNum;
@@ -105,7 +105,7 @@ public class VideoView extends SurfaceView implements
     private OnInfoListener mOnInfoListener;
     private OnBufferingUpdateListener mOnBufferingUpdateListener;
     private int mCurrentBufferPercentage;
-    private long mSeekWhenPrepared;
+    protected long mSeekWhenPrepared;
     private boolean mCanPause = true;
     private boolean mCanSeekBack = true;
     private boolean mCanSeekForward = true;
@@ -134,7 +134,7 @@ public class VideoView extends SurfaceView implements
 
     /**
      * Set the display options
-     * 
+     *
      * @param layout
      *            <ul>
      *            <li>{@link #VIDEO_LAYOUT_ORIGIN}
@@ -222,7 +222,7 @@ public class VideoView extends SurfaceView implements
     public void setUserAgent(String ua) {
     	mUserAgent = ua;
     }
-    
+
     public void stopPlayback() {
         if (mMediaPlayer != null) {
             mMediaPlayer.stop();

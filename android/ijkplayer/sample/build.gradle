@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     // http://tools.android.com/tech-docs/new-build-system/tips
@@ -8,7 +8,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "tv.danmaku.ijk.media.sample"
+        //applicationId "tv.danmaku.ijk.media.sample"
         minSdkVersion 9
         targetSdkVersion 22
         versionCode 301000
